@@ -1471,6 +1471,14 @@ class CliTests(unittest.TestCase):
         self.assertIn("restore | new-default | opt-in | cannot-tell", addendum)
         self.assertIn("Write this next to the VISION per-rule verdict", addendum)
         self.assertIn("not new-default", addendum)
+        self.assertIn(
+            "the new behavior stays off unless the user turns it on", addendum
+        )
+        self.assertIn(
+            "Changing a default-on setting, or shipping a new default-on config, is new-default",
+            addendum,
+        )
+        self.assertNotIn("behind a flag or config", addendum)
         triage = Path(__file__).resolve().parents[2] / "TRIAGE.md"
         triage_text = triage.read_text()
         self.assertIn("Cannot-tell blocks auto-merge", triage_text)
@@ -1479,6 +1487,14 @@ class CliTests(unittest.TestCase):
         self.assertIn("restore | new-default | opt-in | cannot-tell", triage_text)
         self.assertIn("not a replacement of Classes", triage_text)
         self.assertIn("not new-default", triage_text)
+        self.assertIn(
+            "the new behavior stays off unless the user turns it on", triage_text
+        )
+        self.assertIn(
+            "Changing a default-on setting, or shipping a new default-on config, is new-default",
+            triage_text,
+        )
+        self.assertNotIn("behind a flag or config", triage_text)
         vision = (
             Path(__file__).resolve().parents[2]
             / "skills/vision-md-triage-verdict/SKILL.md"
@@ -1489,6 +1505,14 @@ class CliTests(unittest.TestCase):
         self.assertIn("restore | new-default | opt-in | cannot-tell", vision)
         self.assertIn("Write this next to the VISION per-rule verdict", vision)
         self.assertIn("Do not special-case a repository", vision)
+        self.assertIn(
+            "the new behavior stays off unless the user turns it on", vision
+        )
+        self.assertIn(
+            "Changing a default-on setting, or shipping a new default-on config, is new-default",
+            vision,
+        )
+        self.assertNotIn("behind a flag or config", vision)
         readme = Path(__file__).resolve().parents[2] / "README.md"
         readme_text = readme.read_text()
         self.assertIn("factory ships never merge without your word", readme_text)

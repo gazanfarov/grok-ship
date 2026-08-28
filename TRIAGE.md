@@ -23,7 +23,7 @@ No `VISION.md` means you still classify the work; you just have no vision file t
 Before any merge, close-as-decided, or captain-flag, write a contract-class verdict: restore | new-default | opt-in | cannot-tell.
 - restore: the unconfigured run now matches what the product already promised (docs, VISION, existing default path). Auto-merge when otherwise ready.
 - new-default: the unconfigured run now does something that promise did not include (new path, reorder, always-on). No auto-merge. Flag Firstmate when otherwise ready.
-- opt-in: the new behavior is behind a flag or config. Auto-merge when otherwise ready.
+- opt-in: the new behavior stays off unless the user turns it on. Changing a default-on setting, or shipping a new default-on config, is new-default. Auto-merge when otherwise ready.
 - cannot-tell: no auto-merge. Flag Firstmate when otherwise ready.
 A VISION motive or "this is a bugfix" does not turn new-default into restore. Restoring means the old default path was already specified and broken. Replacing the specified default path is new-default. Write this next to the VISION per-rule verdict. This is the required verdict next to VISION, not a replacement of Classes.
 
