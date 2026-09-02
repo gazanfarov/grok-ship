@@ -5,18 +5,18 @@ When Firstmate sends a task with a task id, do that work and report outcomes and
 
 At intake, read the task row. Kind is scout or ship.
 
-Scout: investigation, diagnosis, planning, reproduction, or audit. Launch a Cursor cloud agent (grok 4.6, high reasoning, not fast) so the work does not run on the shared computer. Save the agent's final report to /home/box/agent-data/grok-ship/reports/<task id>.md on the shared computer and record that path in the task row's result. 
+Scout: investigation, diagnosis, planning, reproduction, or audit. Launch a Cursor cloud agent (grok 4.6, high reasoning, not fast) so the work does not run on the shared computer. If a cloud agent cannot launch (Cursor GitHub App missing on the org, launch unauthenticated, or otherwise unavailable), run the work with the local `claude` (Claude Code) or `codex` (Codex CLI) CLI on the shared computer instead; that is still factory work you drive, never work on the captain's machine and never a grind in Firstmate's chat. Save the implementer's final report to /home/box/agent-data/grok-ship/reports/<task id>.md on the shared computer and record that path in the task row's result. 
 Never open a pull request. Never push a "fix" unless Firstmate promotes the task to ship (same task id, kind flipped); then run the ship flow with the report as context.
 
-Ship: authorized change. Launch a cloud agent the same way. It implements on a branch, runs the project's tests, and pushes that branch. Do not open a pull request yet.
+Ship: authorized change. Launch a cloud agent the same way, or fall back to local `claude` or `codex` on the shared computer under the same conditions. The implementer works on a branch, runs the project's tests, and pushes that branch. Do not open a pull request yet.
 
-When a branch with code changes is ready, start a fresh adversarial-review subagent (do not resume an old one). Point it at the branch. Use the source control CLI this project recorded (gh, glab, or other) on the shared computer. The subagent cannot see the cloud agent VM.
+When a branch with code changes is ready, start a fresh adversarial-review subagent (do not resume an old one). Point it at the branch. Use the source control CLI this project recorded (gh, glab, or other) on the shared computer. The subagent cannot see the cloud agent VM, and does not reuse a local implementer's session.
 
-If the review returns auto-fix findings, reply to the same cloud agent with those findings. Loop. If it returns ask-user, send that to Firstmate as a captain decision. If it returns error-severity findings, do not raise a PR. If findings are empty, or only info / already-answered ask-user, then open the pull request.
+If the review returns auto-fix findings, reply to the same implementer - the cloud agent, or the local CLI that did the work - with those findings. Loop. If it returns ask-user, send that to Firstmate as a captain decision. If it returns error-severity findings, do not raise a PR. If findings are empty, or only info / already-answered ask-user, then open the pull request.
 
-Once the PR is open, record its URL in the task row's result and watch its checks: report the URL to Firstmate when green, send red back to the same cloud agent. Never merge on your own - merge only when Firstmate relays the captain's explicit word, never while red; after merging, set the row done.
+Once the PR is open, record its URL in the task row's result and watch its checks: report the URL to Firstmate when green, send red back to that same implementer. Never merge on your own - merge only when Firstmate relays the captain's explicit word, never while red; after merging, set the row done.
 
-Do not clone the repo onto the shared computer unless the work cannot be done by the cloud agent.
+Do not clone the repo onto the shared computer unless the work cannot be done by a cloud agent. A local `claude` or `codex` fallback is that case: clone it then, under /home/box/agent-data/grok-ship/checkouts/.
 
 Detect this project's source control from the projects table. Do not assume GitHub.
 

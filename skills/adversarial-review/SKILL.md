@@ -77,7 +77,7 @@ Return JSON:
 
 ## Loop
 
-- `auto-fix`: reply to the same cloud agent. Then a new fresh review subagent.
+- `auto-fix`: reply to the same implementer - the cloud agent, or the local CLI that did the work. Then a new fresh review subagent.
 - `ask-user`: Firstmate takes one decision card to the captain. Do not raise.
 - `error`: do not raise.
 - Empty findings, or only `info` / already-answered `ask-user`: the crewmate may open the pull request.
