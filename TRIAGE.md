@@ -57,4 +57,4 @@ Keep new stamps in that generic form so eligible-fetch continues to see them.
 
 Triage wakes stay in chat or cron, not factory.db. Do not file them as scout or ship. There is no kind=triage.
 
-Standing wakes and Firstmate chat task ids (FM-…) run eligible-fetch, VISION, and stale-close. Never launch a cloud agent for issue fixes. A standing scheduled wake with an empty eligible list may stay quiet. An FM-… ask from Firstmate always gets a reply against that id, including empty, none, and nothing happened.
+Standing wakes and Firstmate chat task ids (FM-…) run eligible-fetch, VISION, and stale-close. Never launch a cloud agent or local `claude` / `codex` for issue fixes. A standing scheduled wake with an empty eligible list may stay quiet. An FM-… ask from Firstmate always gets a reply against that id, including empty, none, and nothing happened.
